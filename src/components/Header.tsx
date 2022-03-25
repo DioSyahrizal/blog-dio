@@ -1,9 +1,11 @@
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import React, { FC } from "react";
 
 const Header: FC = () => {
+  const { theme, setTheme } = useTheme();
   return (
-    <header className="border-b-2 border-gray-200">
+    <header className="border-b-2 dark:border-gray-700 border-gray-200">
       <div className="mx-auto max-w-6xl py-5 flex content-center justify-center items-center">
         <div className="flex-auto">
           <Link href="/" passHref>
@@ -15,10 +17,16 @@ const Header: FC = () => {
             <span>Dev</span>
           </Link>
         </div>
-        <div className="hover:text-gray-500 cursor-pointer">
+        <div className="hover:text-gray-500 cursor-pointer mr-4">
           <Link href="/personal" passHref>
             <span>Personal</span>
           </Link>
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          Toogle
         </div>
       </div>
     </header>

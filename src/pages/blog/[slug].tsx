@@ -35,7 +35,7 @@ const PostPage: NextPage<Props> = ({ formatter, content }) => {
             />
           </div>
 
-          <div className="prose mt-3">
+          <div className="prose dark:prose-invert mt-8">
             <ReactMarkdown components={CodeBlock}>{content}</ReactMarkdown>
           </div>
         </div>
