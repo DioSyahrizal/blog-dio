@@ -1,12 +1,17 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { PostProps } from "../../interfaces/post";
+import { PageMetadata } from "../../interfaces/common";
+
+interface PostInterface extends PageMetadata {
+  slug: string;
+  content: string;
+}
 
 const postsDirectory = join(process.cwd(), "/src/_post");
 const files = fs.readdirSync(postsDirectory);
 
-export function getAllPosts(): PostProps[] {
+export function getAllPosts(): PostInterface[] {
   const posts: any = files.map((filename) => {
     const slug = filename.replace(/\.md$/, "");
     const markdownMeta = fs.readFileSync(
