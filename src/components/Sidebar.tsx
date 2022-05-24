@@ -19,9 +19,9 @@ const Sidebar: FC<Props> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   return (
-    <div className={`z-10 fixed ${isOpen ? "block" : "hidden"}`}>
+    <div className={`z-10 fixed ${isOpen ? "visible" : "invisible"}`}>
       <div
-        className={`${styles.overlay}`}
+        className={`${styles.overlay} ` + `${isOpen && styles.overlayVisible}`}
         onClick={(e) => {
           if (e.target !== e.currentTarget) {
             return;
@@ -30,7 +30,10 @@ const Sidebar: FC<Props> = ({ isOpen, onClose }) => {
         }}
       >
         <div
-          className={`absolute h-screen w-[300px] z-20 dark:bg-slate-900 bg-white border-r border-gray-200 dark:border-gray-700 text-xl`}
+          className={
+            `absolute h-screen z-20 w-[0px] dark:bg-slate-900 bg-white border-r border-gray-200 dark:border-gray-700 text-xl transition-all ` +
+            `${isOpen && styles.sidebarVisible}`
+          }
         >
           Sidebar
         </div>
