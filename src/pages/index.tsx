@@ -1,5 +1,4 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
-import Image from "next/image";
 
 import Content from "../components/Content";
 import Header from "../components/Header";

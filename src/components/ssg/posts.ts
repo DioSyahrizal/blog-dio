@@ -1,10 +1,10 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+
 import { PageMetadata } from "../../interfaces/common";
 
 interface PostInterface extends PageMetadata {
-  slug: string;
   content: string;
 }
 

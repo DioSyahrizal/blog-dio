@@ -1,5 +1,8 @@
 import React, { FC, useEffect } from "react";
+import clsx from "clsx";
+
 import styles from "./Sidebar.module.css";
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
@@ -19,9 +22,9 @@ const Sidebar: FC<Props> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   return (
-    <div className={`z-10 fixed ${isOpen ? "visible" : "invisible"}`}>
+    <div className={clsx("z-10 fixed", isOpen ? "visible" : "invisible")}>
       <div
-        className={`${styles.overlay} ` + `${isOpen && styles.overlayVisible}`}
+        className={clsx(styles.overlay, isOpen && styles.overlayVisible)}
         onClick={(e) => {
           if (e.target !== e.currentTarget) {
             return;
@@ -30,10 +33,10 @@ const Sidebar: FC<Props> = ({ isOpen, onClose }) => {
         }}
       >
         <div
-          className={
-            `absolute h-screen z-20 w-[0px] dark:bg-slate-900 bg-white border-r border-gray-200 dark:border-gray-700 text-xl transition-all ` +
-            `${isOpen && styles.sidebarVisible}`
-          }
+          className={clsx(
+            "absolute h-screen z-20 left-[-310px] w-[300px] dark:bg-slate-900 bg-white border-r border-gray-200 dark:border-gray-700 text-xl transition-all",
+            isOpen && styles.sidebarVisible
+          )}
         >
           Sidebar
         </div>
