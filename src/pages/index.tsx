@@ -1,5 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
-import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import queryString from "query-string";
 
 import Content from "../components/Content";
 import Header from "../components/Header";
@@ -10,6 +12,18 @@ import { getAllPosts } from "../components/ssg/posts";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ posts }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("search: ", window.location.search);
+      console.log(
+        "qs: ",
+        queryString.parse(window.location.search, { arrayFormat: "bracket" })
+      );
+    }
+  }, [router]);
+
   return (
     <div>
       <PageSEO
@@ -23,6 +37,18 @@ const Home: NextPage<Props> = ({ posts }) => {
             <PostCard key={post.excerpt} {...post} />
           ))}
         </div>
+        <button
+          onClick={() =>
+            router.push(
+              `?${queryString.stringify(
+                { includes: ["you", "me"] },
+                { arrayFormat: "bracket" }
+              )}`
+            )
+          }
+        >
+          link
+        </button>
       </Content>
     </div>
   );

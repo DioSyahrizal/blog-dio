@@ -1,10 +1,9 @@
-import { marked } from "marked";
+import React, { useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
-import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import CodeBlock from "../../components/CodeBlock";
 
+import CodeBlock from "../../components/CodeBlock";
 import Content from "../../components/Content";
 import Header from "../../components/Header";
 import PageSEO from "../../components/PageSEO";
@@ -20,6 +19,7 @@ interface Props {
 const PostPage: NextPage<Props> = ({ formatter, content }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { title, date } = formatter;
+
   return (
     <div>
       <PageSEO title={title} description={title} />
