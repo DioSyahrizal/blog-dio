@@ -15,13 +15,11 @@ const Home: NextPage<Props> = ({ posts }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      console.log("search: ", window.location.search);
-      console.log(
-        "qs: ",
-        queryString.parse(window.location.search, { arrayFormat: "bracket" })
-      );
-    }
+    console.log("search: ", window.location.search);
+    console.log(
+      "qs: ",
+      queryString.parse(window.location.search, { arrayFormat: "bracket" })
+    );
   }, [router]);
 
   return (

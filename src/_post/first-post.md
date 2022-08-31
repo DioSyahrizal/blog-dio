@@ -47,9 +47,10 @@ But if you not using CRA, you can install manually like this
 
 ```bash
 yarn add --dev jest
+```
 
 or
-
+```bash
 npm install --save-dev jest
 ```
 

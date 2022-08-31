@@ -12,7 +12,7 @@ const postsDirectory = join(process.cwd(), "/src/_post");
 const files = fs.readdirSync(postsDirectory);
 
 export function getAllPosts(): PostInterface[] {
-  const posts: any = files.map((filename) => {
+  const posts = files.map((filename) => {
     const slug = filename.replace(/\.md$/, "");
     const markdownMeta = fs.readFileSync(
       `${postsDirectory}/${filename}`,
@@ -26,7 +26,7 @@ export function getAllPosts(): PostInterface[] {
     };
   });
 
-  return posts;
+  return posts as PostInterface[];
 }
 
 export function getPostPath() {
