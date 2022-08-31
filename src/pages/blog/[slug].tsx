@@ -1,7 +1,6 @@
-import { marked } from "marked";
+import React, { useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
-import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 import CodeBlock from "../../components/CodeBlock";
