@@ -1,7 +1,5 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import queryString from "query-string";
 
 import Content from "../components/Content";
 import Header from "../components/Header";
@@ -13,14 +11,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ posts }) => {
   const router = useRouter();
-
-  useEffect(() => {
-    console.log("search: ", window.location.search);
-    console.log(
-      "qs: ",
-      queryString.parse(window.location.search, { arrayFormat: "bracket" })
-    );
-  }, [router]);
 
   return (
     <div>
@@ -35,18 +25,6 @@ const Home: NextPage<Props> = ({ posts }) => {
             <PostCard key={post.excerpt} {...post} />
           ))}
         </div>
-        <button
-          onClick={() =>
-            router.push(
-              `?${queryString.stringify(
-                { includes: ["you", "me"] },
-                { arrayFormat: "bracket" }
-              )}`
-            )
-          }
-        >
-          link
-        </button>
       </Content>
     </div>
   );
