@@ -1,17 +1,14 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
-import { useRouter } from "next/router";
 
 import Content from "../components/Content";
 import Header from "../components/Header";
 import PageSEO from "../components/PageSEO";
 import PostCard from "../components/PostCard";
-import { getAllPosts } from "../components/ssg/posts";
+import { getAllPosts } from "../libs/ssg/posts";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ posts }) => {
-  const router = useRouter();
-
   return (
     <div>
       <PageSEO

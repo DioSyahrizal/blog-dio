@@ -8,8 +8,10 @@ import Content from "../../components/Content";
 import Header from "../../components/Header";
 import PageSEO from "../../components/PageSEO";
 import Sidebar from "../../components/Sidebar";
-import { getPostDetail, getPostPath } from "../../components/ssg/posts";
+import { getPostDetail, getPostPath } from "../../libs/ssg/posts";
 import { PageMetadata } from "../../interfaces/common";
+import clsx from "clsx";
+
 interface Props {
   slug: string;
   formatter: PageMetadata;
@@ -31,12 +33,13 @@ const PostPage: NextPage<Props> = ({ formatter, content }) => {
             Open sidebar
           </button>
           <div className="my-8">
-            <h1 className="font-bold text-5xl">{title}</h1>
+            <h1 className="font-bold text-5xl sm:text-3xl mb-2">{title}</h1>
             <p>{date}</p>
             <div className="flex justify-center mt-3">
               <Image
                 src={formatter.cover_image}
                 alt={title}
+                className={clsx("sm:w-[300px] sm:h-[100]")}
                 width={700}
                 height={500}
               />

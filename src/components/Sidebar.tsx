@@ -34,7 +34,7 @@ const Sidebar: FC<Props> = ({ isOpen, onClose }) => {
       >
         <div
           className={clsx(
-            "absolute h-screen z-20 left-[-310px] w-[300px] dark:bg-slate-900 bg-white border-r border-gray-200 dark:border-gray-700 text-xl transition-all",
+            "absolute h-full z-20 left-[-310px] w-[300px] dark:bg-slate-900 bg-white border-r border-gray-200 dark:border-gray-700 text-xl transition-all",
             isOpen && styles.sidebarVisible
           )}
         >
