@@ -4,7 +4,7 @@ import Content from "../components/Content";
 import Header from "../components/Header";
 import PageSEO from "../components/PageSEO";
 import PostCard from "../components/PostCard";
-import { getAllPosts } from "../libs/ssg/posts";
+import { getAllDevPosts } from "../libs/ssg/posts";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -19,7 +19,7 @@ const Home: NextPage<Props> = ({ posts }) => {
       <Content>
         <div className="grid grid-cols-4 gap-6 my-5">
           {posts.map((post) => (
-            <PostCard key={post.excerpt} {...post} />
+            <PostCard key={post.excerpt} section="dev" {...post} />
           ))}
         </div>
       </Content>
@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = getAllPosts();
+  const posts = getAllDevPosts();
   return {
     props: {
       posts,
