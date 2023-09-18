@@ -4,18 +4,18 @@ import matter from "gray-matter";
 
 import { PageMetadata } from "../../interfaces/common";
 
-interface PostInterface extends PageMetadata {
+interface DevInterface extends PageMetadata {
   content: string;
 }
 
-const postsDirectory = join(process.cwd(), "/src/_post");
-const files = fs.readdirSync(postsDirectory);
+const devsDirectory = join(process.cwd(), "/src/posts/dev");
+const files = fs.readdirSync(devsDirectory);
 
-export function getAllPosts(): PostInterface[] {
-  const posts = files.map((filename) => {
+export function getAllDevPosts(): DevInterface[] {
+  const devs = files.map((filename) => {
     const slug = filename.replace(/\.md$/, "");
     const markdownMeta = fs.readFileSync(
-      `${postsDirectory}/${filename}`,
+      `${devsDirectory}/${filename}`,
       "utf-8"
     );
     const { data: formatter, content } = matter(markdownMeta);
@@ -26,7 +26,7 @@ export function getAllPosts(): PostInterface[] {
     };
   });
 
-  return posts as PostInterface[];
+  return devs as DevInterface[];
 }
 
 export function getPostPath() {
@@ -39,7 +39,7 @@ export function getPostPath() {
 }
 
 export function getPostDetail(slug: string) {
-  const markdownMeta = fs.readFileSync(`${postsDirectory}/${slug}.md`, "utf-8");
+  const markdownMeta = fs.readFileSync(`${devsDirectory}/${slug}.md`, "utf-8");
   const { data: formatter, content } = matter(markdownMeta);
   return {
     formatter,

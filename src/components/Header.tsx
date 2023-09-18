@@ -6,11 +6,13 @@ const Header: FC = () => {
   const { theme, setTheme } = useTheme();
   return (
     <header className="border-b-2 dark:border-gray-700 border-gray-200">
-      <div className="mx-auto max-w-6xl py-5 flex content-center justify-center items-center">
+      <div className="mx-auto w-[1200px] py-5 flex content-center justify-center items-center">
         <div className="flex-auto">
-          <Link href="/" passHref>
-            <h2 className="font-semibold text-xl">Dio&apos;s Blog</h2>
-          </Link>
+          <div className="cursor-pointer">
+            <Link href="/" passHref>
+              <h2 className="font-semibold text-xl">Dio&apos;s Blog</h2>
+            </Link>
+          </div>
         </div>
         <div className="mr-4 hover:text-gray-500 cursor-pointer">
           <Link href="/dev" passHref>

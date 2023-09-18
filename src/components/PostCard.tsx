@@ -3,13 +3,23 @@ import { useRouter } from "next/router";
 import React, { FC } from "react";
 import { PostProps } from "../interfaces/post";
 
-const PostCard: FC<PostProps> = ({ cover_image, title, date, slug }) => {
+interface PostCardProps extends PostProps {
+  section: string;
+}
+
+const PostCard: FC<PostCardProps> = ({
+  cover_image,
+  title,
+  date,
+  slug,
+  section,
+}) => {
   const router = useRouter();
 
   return (
     <div
       className="rounded-xl border-2 overflow-hidden cursor-pointer"
-      onClick={() => router.push(`/blog/${slug}`)}
+      onClick={() => router.push(`/${section}/${slug}`)}
     >
       <Image
         src={cover_image}

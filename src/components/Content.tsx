@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import React, { FC, PropsWithChildren } from "react";
+import React, { FC } from "react";
 
-const Content: FC<PropsWithChildren> = ({ children }) => {
-  return <div className={clsx("mx-auto w-6xl")}>{children}</div>;
+const Content: FC = ({ children }) => {
+  return <div className={clsx("mx-auto w-[1200px]")}>{children}</div>;
 };
 
 export default Content;
